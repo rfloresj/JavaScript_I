@@ -9,7 +9,7 @@
     <title>Presupuesto</title>
 </head>
 
-<body>
+<body onload="cargarApp()">
     <!-- Headboard -->
     <div class="cabecero">
         <div class="presupuesto">
@@ -32,19 +32,18 @@
         </div>
     </div>
     <!-- Form -->
-    <form action="#" id="forma">
+    <form id="forma" onsubmit='return false;'>
         <div class="agregar">
             <div class="agregar_contenedor">
-                <select class="agregar_tipo" name="plus" id="tipo">
-                    <option value="ingreso" selected>+</option>
+                <select id="tipo" class="agregar_tipo">
+                    <option value="ingreso" select>+</option>
                     <option value="egreso">-</option>
-                    <input type="text" class="agregar_descripcion"
-                        placeholder="Agregar Descripción y el id descripción">
-                    <input type="number" class="agregar_valor" placeholder="Valor" value="valor" step="any">
-                    <button class="agregar_btn">
-                        <ion-icon name="checkmark-circle-outline"></ion-icon>
-                    </button>
                 </select>
+                <input type="text" class="agregar_descripcion" placeholder="Agregar Descripcion" id='descripcion' />
+                <input type="number" class="agregar_valor" placeholder="Valor" id='valor' step="any">
+                <button class="agregar_btn" onclick='agregarDato()'>
+                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                </button>
             </div>
         </div>
     </form>
@@ -52,28 +51,30 @@
     <div class="contenedor limpiarEstilos">
         <div class="ingreso">
             <h2 class="ingreso_titulo">Ingresos</h2>
-            <div class="elemento limpiarEstilos">
-                <div class="elemento_descripcion">Salario</div>
+            <div id="lista-ingresos">
+                <div class="elemento limpiarEstilos">
+                    <div class="elemento_descripcion">Salario</div>
+                    <div class="derecha limpiarEstilos">
+                        <div class="elemento_valor">+2,200.00</div>
+                        <div class="elemento_eliminar">
+                            <button class="elemento_eliminar--btn">
+                                <ion-icon name="close-circle-outline"></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="elemento limpiarEstilos">
+                <div class="elemento_descripcion"></div>
                 <div class="derecha limpiarEstilos">
-                    <div class="elemento_valor">+2,200.00</div>
+                    <div class="elemento_valor"></div>
                     <div class="elemento_eliminar">
                         <button class="elemento_eliminar--btn">
                             <ion-icon name="close-circle-outline"></ion-icon>
                         </button>
                     </div>
                 </div>
-            </div>
-            <div class="elemento limpiarEstilos">
-                <div class="elemento_descripcion">Venta coche</div>
-                <div class="derecha limpiarEstilos">
-                    <div class="elemento_valor">+1,500.00</div>
-                    <div class="elemento_eliminar">
-                        <button class="elemento_eliminar--btn">
-                            <ion-icon name="close-circle-outline"></ion-icon>
-                        </button>
-                    </div>
-                </div>
-            </div>
+            </div>-->
         </div>
         <div class="egreso">
             <h2 class="egreso_titulo">Egresos</h2>
@@ -91,7 +92,7 @@
                     </div>
                 </div>
             </div>
-            <div class="elemento limpiarEstilos">
+            <!--<div class="elemento limpiarEstilos">
                 <div class="elemento_descripcion">Ropa</div>
                 <div class="derecha limpiarEstilos">
                     <div class="elemento_valor">-400.00</div>
@@ -102,10 +103,12 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
-
+    <script src="./js/Dato.js"></script>
+    <script src="./js/Egreso.js"></script>
+    <script src="./js/Ingreso.js"></script>
     <script src="./js/app.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
 </body>
